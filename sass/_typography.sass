@@ -1,24 +1,35 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,400italic,300italic,300,700,700italic)
+@import url(http://fonts.googleapis.com/css?family=Lato:700)
+@import url(http://fonts.googleapis.com/css?family=Merriweather:400,400italic,700,700italic)
 
 
-body, button, input, select, textarea
+// font-family: 'Lato', sans-serif
+
+
+body
   color: #404040
   line-height: 1.5
-  font-family: 'adelle' Georgia, Times, 'Times New Roman', serif
+  font-family: 'Merriweather', Georgia, Times, 'Times New Roman', serif
 
 h1, h2, h3, h4, h5, h6
   clear: both
-  margin: 0
-  font-family: 'superclarendon',  Georgia, Times, 'Times New Roman', serif
+  font-family: 'Merriweather', Georgia, Times, 'Times New Roman', serif
+  -webkit-font-smoothing: antialiased
   a
     text-decoration: none
+    border: 0
 
 h1
   margin-bottom: 1rem
-  line-height: 1.4
+  line-height: 1
+  letter-spacing: -0.03125em
+  margin: 0.5em 0
+
 h2
   margin-bottom: 1rem
-  line-height: 1.4
+  line-height: 1.2
+  margin: 0.8em 0
+
 h3
   margin-bottom: 1rem
   line-height: 1.4
@@ -31,9 +42,54 @@ h5
 h6
   margin-bottom: 1rem
   line-height: 1.4
+  text-transform: uppercase
+  letter-spacing: 0.1429em
+
+
+/*
+ Links
+ */
+
+//normal hover active visited focus
 
 a
-  +link-colors($primary,$primary,$primary,$primary,$primary)
+  +link-colors($link,$link-active,$link-active,$link,$link)
+  background-color: transparent
+  text-decoration: none
+  border-bottom: 1px solid rgba(34,85,221,0.1)
+  &:active, &:hover
+    outline: 0
+
+a:focus
+  +text-shadow($link-focus 0 0 5px)
+
+a:hover
+  border-bottom-color: $link-active
+
+a:link, a:visited, a:hover
+  transition: all 0.2s ease
+
+a:active
+  border-bottom: 1px solid $link-active
+  transition: none
+
+/* External */
+a[rel="external"]
+  background: url(data:image/svg+xml;charset=utf-8;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMCw0IEw4LDQgTDYsNiBMMiw2IEwyLDE0IEwxMCwxNCBMMTAsMTAuNSBMMTIsOC41IEwxMiwxNiBMMCwxNiBaIE0wLDQiIGZpbGw9InJnYmEoMCwwLDAsMC4zMykiPjwvcGF0aD48cGF0aCBkPSJNNiwwIEwxNiwwIEwxNiwxMCBMMTQsMTAgTDE0LDMuNSBMNy41LDEwIEw2LDguNSBMMTIuNSwyIEw2LDIgWiBNNiwwIiBmaWxsPSJyZ2JhKDAsMCwwLDAuMzMpIj48L3BhdGg+PC9zdmc+) no-repeat right 40%
+  background-size: 12px
+  padding-right: 1em
+
+
+/* Tag */
+a[rel="tag"]
+  font-size: 0.75em /* 12px */
+  line-height: 1.3334 /* 16px */
+  text-transform: lowercase
+  border: 0
+
+
+
+////
 
 p
   margin-bottom: 1.5em
@@ -79,3 +135,6 @@ small
 
 big
   font-size: 125%
+
+form
+  font-family: 'Lato', sans-serif

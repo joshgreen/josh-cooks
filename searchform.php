@@ -1,7 +1,8 @@
-<form action="/" method="get">
-<fieldset>
-<label for="search">Search in
-<input type="text" name="s" id="search" value="" />
-<!-- <input type="image" alt="Search" src="/images/search.png" /> -->
-</fieldset>
-</form>
+
+  <form action="/" method="get">
+
+    <input type="search" name="s" id="search" value="" class="search-field" placeholder="Search">
+  <button type="submit">
+    <img src="images/search-1.svg" alt="Search" class="search-icon" />
+  </button>
+  </form>

@@ -32,23 +32,19 @@ get_header(); ?>
                   <div class="first-post">
                     <?php if (has_post_thumbnail()) {
                       echo '<div class="">';
-                      echo '<img src="http://lorempixel.com/820/480" />';
-                      // echo the_post_thumbnail('large-thumb');
+                      echo the_post_thumbnail('blog-thumb');
                       echo '</div>';
                           }
                       ?>
 
-                      <a href="<?php the_permalink(); ?>" title="<?php printf(__( 'Read %s', 'wpbx' ), wp_specialchars(get_the_title(), 1)) ?>">
-
-                      </a>
                   </div>
               <?php endif;
-              if ( $i != 0 ) : ?>
+               if ( $i != 0 ) : ?>
                   <div class="secondary-post">
-              <?php endif; ?>
-              <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-                  <?php the_title(); ?>
-              </a>
+                      <?php endif; ?>
+                      <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+                          <?php the_title(); ?>
+                      </a>
               </div>
 
               <?php $i++;
