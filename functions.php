@@ -1,4 +1,3 @@
-
 <?php
 /**
  * josh-cooks functions and definitions
@@ -142,18 +141,14 @@ require get_template_directory() . '/inc/jetpack.php';
  * Featured image support
  */
 add_theme_support( 'post-thumbnails' );
-
 if ( function_exists( 'add_theme_support' ) ) {
 add_theme_support( 'post-thumbnails' );
 add_image_size('large-thumb', 1060, 650, true);
-add_image_size('super-thumb', 2080, auto, true);
 set_post_thumbnail_size( 150, 150, true ); // default Post Thumbnail dimensions (cropped)
-
 // additional image sizes
 // delete the next line if you do not need additional image sizes
 add_image_size( 'blog-thumb', 800, 9999 ); //300 pixels wide (and unlimited height)
 }
-
 // Replaces the excerpt "more" text by a link
 function new_excerpt_more($more) {
        global $post;
