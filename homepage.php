@@ -384,5 +384,5 @@ p q r s t u v w x y z { | } ~</samp></pre>
   </main><!-- #main -->
   </div><!-- #primary -->
 
-<?php get_sidebar(); ?>
+
 <?php get_footer(); ?>

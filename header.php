@@ -38,22 +38,7 @@
 <div id="page" class="hfeed site">
   <a class="skip-link" href="#content"><?php _e( 'Skip to content', 'josh-cooks' ); ?></a>
 
-  <div class="top-bar">
-    <div class="max">
-      <div class="social">
-        <ul>
-          <li><a href="https://twitter.com/josh_cooks"><img src="images/twitter.svg"></a></li>
-          <li><a href="https://twitter.com/josh_cooks"><img src="images/instagram.svg"></a></li>
-          <li><a href="https://twitter.com/josh_cooks"><img src="images/youtube.svg"></a></li>
-          <li><a href="https://twitter.com/josh_cooks"><img src="images/googleplus.svg"></a></li>
-          <li><a href="https://twitter.com/josh_cooks"><img src="images/flickr.svg"></a></li>
-        </ul>
-      </div> <!-- .social -->
-      <div class="search-box">
-        <?php get_search_form(); ?>
-      </div> <!-- .search-box -->
-    </div> <!-- .section -->
-  </div> <!-- .top-bar -->
+
 
   <header id="masthead" class="site-header" role="banner">
 

@@ -2,41 +2,58 @@
 /**
  * Template Name: Recipes Page
  *
- * Selectable from a dropdown menu on the edit page screen.
+ * This is the template that displays all pages by default.
+ * Please note that this is the WordPress construct of pages
+ * and that other 'pages' on your WordPress site will use a
+ * different template.
+ *
+ * @package josh-cooks
  */
-?>
 
 get_header(); ?>
 
 	<div id="primary" class="content-area max">
 		<main id="main" class="site-main" role="main">
-		<?php query_posts( 'post_type=recipes'); ?>
+			<?php
+			    $args = array(
+			      'post_type' => 'recipe',
+			      'posts_per_page'         => '40'
 
-		<?php if ( have_posts() ) : ?>
+			    );
+			    $recipe = new WP_Query( $args );
+			    if( $recipe->have_posts() ) {
+			      while( $recipe->have_posts() ) {
+			        $recipe->the_post();
+			        ?>
 
-			<?php /* Start the Loop */ ?>
-			<?php while ( have_posts() ) : the_post(); ?>
 
-				<?php
-					/* Include the Post-Format-specific template for the content.
-					 * If you want to override this in a child theme, then include a file
-					 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-					 */
-					get_template_part( 'content', get_post_format() );
-				?>
+			          <li class="holder">
+			            <div class="email-design-main">
 
-			<?php endwhile; ?>
+			            	<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+			            	<?php
+			            	    if (has_post_thumbnail()) {
+			            	        echo '<div class="single-post-thumbnail clear">';
+			            	        echo the_post_thumbnail('large-thumb');
+			            	        echo '</div>';
+			            	    }
+			            	?>
 
-			<?php the_posts_navigation(); ?>
+			            	<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+			            </a>
 
-		<?php else : ?>
 
-			<?php get_template_part( 'content', 'none' ); ?>
+			          </div> <!-- .email-design-main -->
+			          </li> <!-- .holder -->
 
-		<?php endif; ?>
+			        <?php
+			      }
+			    }
+			    else { echo 'Oh no recipes!'; }
+			 ?>
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
-<?php get_sidebar(); ?>
+
 <?php get_footer(); ?>
