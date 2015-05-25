@@ -17,40 +17,42 @@ get_header(); ?>
     <main id="main" class="site-main" role="main">
 
       <?php
-      $queryObject = new  Wp_Query( array(
-          'showposts' => 5,
-          'post_type' => array('recipe'),
-          'orderby' => 1,
-          ));
+      $queryObject = new  WP_Query( array(
+        'showposts' => 5,
+        'post_type' => array('post', 'recipe'),
+        'orderby' => 0,
+        ));
+
+
+
 
       // The Loop
-      if ( $queryObject->have_posts() ) :
-          $i = 0;
-          while ( $queryObject->have_posts() ) :
-              $queryObject->the_post();
-              if ( $i == 0 ) : ?>
-                  <div class="first-post">
-                    <?php if (has_post_thumbnail()) {
-                      echo '<div class="">';
-                      echo the_post_thumbnail('blog-thumb');
-                      echo '</div>';
-                          }
-                      ?>
+          if ( $queryObject->have_posts() ) :
+              $i = 0;
+              while ( $queryObject->have_posts() ) :
+                  $queryObject->the_post();
+                  if ( $i == 0 ) : ?>
 
-                  </div>
-              <?php endif;
-               if ( $i != 0 ) : ?>
-                  <div class="secondary-post">
-                      <?php endif; ?>
-                      <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-                          <?php the_title(); ?>
-                      </a>
-              </div>
+                  <?php endif;
+                   if ( $i != 0 ) : ?><?php endif; ?>
+                      <div class="blog-posts">
+                        <?php if (has_post_thumbnail()) {
+                        echo '<div class="">';
+                        echo the_post_thumbnail('blog-thumb');
+                        echo '</div>';
+                            }
+                        ?>
+                        <h2 class="blog-title"><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h2>
+                        <p><?php the_excerpt(); ?></p>
+                        <div class="buttonbox">
+                          <a href="<?php the_permalink(); ?>" class="button-primary" title="<?php the_title(); ?>">Read more</a>
+                        </div>
+                      </div>
 
-              <?php $i++;
+                  <?php $i++;
 
-          endwhile;
-      endif;?>
+              endwhile;
+          endif;?>
 
 
 

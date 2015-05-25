@@ -1033,28 +1033,28 @@ img {
   height: auto;
 }
 
-.max, .entry-header, .entry-content, .entry-footer, .site-info, .comments-area {
+.max, .entry-header, .entry-content, .entry-footer, .site-info, .comments-area, .navigation[role=navigation] {
   margin: 0 auto;
   max-width: 75%;
   padding: 0;
 }
-.max:after, .entry-header:after, .entry-content:after, .entry-footer:after, .site-info:after, .comments-area:after {
+.max:after, .entry-header:after, .entry-content:after, .entry-footer:after, .site-info:after, .comments-area:after, .navigation[role=navigation]:after {
   content: "";
   display: table;
   clear: both;
 }
 @media (min-width: 20px) and (max-width: 767px) {
-  .max, .entry-header, .entry-content, .entry-footer, .site-info, .comments-area {
+  .max, .entry-header, .entry-content, .entry-footer, .site-info, .comments-area, .navigation[role=navigation] {
     max-width: 95%;
   }
 }
 @media (min-width: 768px) and (max-width: 999px) {
-  .max, .entry-header, .entry-content, .entry-footer, .site-info, .comments-area {
+  .max, .entry-header, .entry-content, .entry-footer, .site-info, .comments-area, .navigation[role=navigation] {
     max-width: 90%;
   }
 }
 @media (min-width: 1000px) {
-  .max, .entry-header, .entry-content, .entry-footer, .site-info, .comments-area {
+  .max, .entry-header, .entry-content, .entry-footer, .site-info, .comments-area, .navigation[role=navigation] {
     max-width: 75%;
   }
 }
@@ -1093,6 +1093,51 @@ th {
 
 thead th {
   border-bottom: 2px solid #ddd;
+}
+
+.blog-title {
+  text-align: center;
+}
+
+.blog-posts {
+  padding: 1rem 0 2rem 0;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid rgba(80, 80, 80, 0.4);
+}
+
+.buttonbox {
+  text-align: center;
+  padding: 0 0 1rem 0;
+}
+
+a.button-primary, input[type="reset"], input[type="submit"] {
+  font-family: "Lato", sans-serif;
+  background: #6e0e0e;
+  color: white;
+  text-transform: uppercase;
+  border: none;
+  padding: 0.6rem 1.5rem;
+  line-height: 1.5;
+  font-size: 0.7rem;
+}
+a.button-primary:visited, input[type="reset"]:visited, input[type="submit"]:visited {
+  color: white;
+}
+a.button-primary:focus, input[type="reset"]:focus, input[type="submit"]:focus {
+  color: white;
+}
+a.button-primary:hover, input[type="reset"]:hover, input[type="submit"]:hover {
+  color: white;
+}
+a.button-primary:active, input[type="reset"]:active, input[type="submit"]:active {
+  color: white;
+}
+a.button-primary:hover, a.button-primary:active, input[type="reset"]:hover, input[type="reset"]:active, input[type="submit"]:hover, input[type="submit"]:active {
+  background: #db3e3e;
+}
+a.button-primary:focus, a.button-primary:active, input[type="reset"]:focus, input[type="reset"]:active, input[type="submit"]:focus, input[type="submit"]:active {
+  text-shadow: none;
+  border: none;
 }
 
 .site-footer {

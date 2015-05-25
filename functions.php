@@ -1,3 +1,4 @@
+
 <?php
 /**
  * josh-cooks functions and definitions
@@ -152,3 +153,10 @@ set_post_thumbnail_size( 150, 150, true ); // default Post Thumbnail dimensions 
 // delete the next line if you do not need additional image sizes
 add_image_size( 'blog-thumb', 800, 9999 ); //300 pixels wide (and unlimited height)
 }
+
+// Replaces the excerpt "more" text by a link
+function new_excerpt_more($more) {
+       global $post;
+       return '<a href="'. get_permalink($post->ID) . '">...</a>';
+}
+add_filter('excerpt_more', 'new_excerpt_more');
