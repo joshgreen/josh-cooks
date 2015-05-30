@@ -12,7 +12,7 @@
  */
 get_header(); ?>
 
-  <div id="primary" class="content-area max">
+  <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
 
       <?php
@@ -44,6 +44,7 @@ get_header(); ?>
                         <a href="<?php the_permalink(); ?>" class="button-primary" title="<?php the_title(); ?>">Read more</a>
                       </div>
                     </div>
+                    <div class="small-blogs">
                   <?php endif;
                    if ( $i != 0 ) : ?>
 
@@ -67,6 +68,7 @@ get_header(); ?>
 
               endwhile;
           endif;?>
+          </div> <!-- .small-blogs -->
 
 
 
