@@ -38,8 +38,6 @@
 <div id="page" class="hfeed site">
   <a class="skip-link" href="#content"><?php _e( 'Skip to content', 'josh-cooks' ); ?></a>
 
-
-
   <header id="masthead" class="site-header" role="banner">
 
     <div class="max">

@@ -1,13 +1,18 @@
 .top-bar
   background: rgba(74,74,74,1.0)
-  height: 40px
   width: 100%
   +group
   clear: both
+  position: relative
   .social
     float: left
     width: 220px
     padding: 0
+    +group
+    +breakpoint(small)
+      width: 100%
+      clear: both
+      display: block
     ul
       overflow: hidden
       margin: 0
@@ -54,12 +59,24 @@
 
 .search-box
   text-align: right
-  position: relative
+  position: absolute
   right: 40px
+  display: inline-block
+  width: 400px
+  background: rgba(74,74,74,1.0)
+  +group
+  +breakpoint(medium)
+    width: 350px
+  +breakpoint(small)
+    width: 100%
+    clear: left
+    display: block
+    margin-top: 40px
   form, fieldset
     border: 0
     margin: 0
     padding: 0
+    outline: none
   input[type=search]
     width: 300px
     height: 20px
@@ -67,24 +84,27 @@
     font-size: 16px
     padding: 10px
     border: 0
+    margin: 0
+    outline: none
     background: rgba(74,74,74,1.0)
+    border: none
     border-left: 1px solid rgba(54,54,54,1.0)
     -moz-appearance: none
     -webkit-appearance: none
     appearance: none
     +transition(all, 0.6s)
     +breakpoint(medium)
-      width: 40%
+      width: 260px
     +breakpoint(small)
-      width: 30%
+      width: 200px
     &:focus
       outline: none
-      width: 400px
+      width: 300px
       background: white
       +breakpoint(medium)
-        width: 40%
+        width: 300px
       +breakpoint(small)
-        width: 30%
+        width: 220px
 
   button
     -moz-appearance: none
