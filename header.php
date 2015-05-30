@@ -33,7 +33,7 @@
 
 <?php wp_head(); ?>
 </head>
-
+<link href='http://fonts.googleapis.com/css?family=Merriweather:400,700,700italic,400italic' rel='stylesheet' type='text/css'>
 <body <?php body_class(); ?>>
 <div id="page" class="hfeed site">
   <a class="skip-link" href="#content"><?php _e( 'Skip to content', 'josh-cooks' ); ?></a>

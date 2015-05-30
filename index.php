@@ -31,37 +31,37 @@ get_header(); ?>
               while ( $queryObject->have_posts() ) :
                   $queryObject->the_post();
                   if ( $i == 0 ) : ?>
-
-                    <div class="first blog-posts">
-                      <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php if (has_post_thumbnail()) {
+                    <div class="first-blog-posts">
+                      <?php if (has_post_thumbnail()) {
                       echo '<div class="">';
                       echo the_post_thumbnail('blog-thumb');
                       echo '</div>';
                           }
-                          ?></a>
+                      ?>
                       <h2 class="blog-title"><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h2>
                       <p><?php the_excerpt(); ?></p>
                       <div class="buttonbox">
                         <a href="<?php the_permalink(); ?>" class="button-primary" title="<?php the_title(); ?>">Read more</a>
                       </div>
                     </div>
-
-
                   <?php endif;
-                   if ( $i != 1 ) : ?><?php endif; ?>
-                      <div class="blog-posts">
-                        <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php if (has_post_thumbnail()) {
+                   if ( $i != 0 ) : ?>
+
+                 <div class="blog-posts">
+                        <?php if (has_post_thumbnail()) {
                         echo '<div class="">';
                         echo the_post_thumbnail('blog-thumb');
                         echo '</div>';
                             }
-                            ?></a>
+                        ?>
                         <h2 class="blog-title"><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h2>
                         <p><?php the_excerpt(); ?></p>
                         <div class="buttonbox">
                           <a href="<?php the_permalink(); ?>" class="button-primary" title="<?php the_title(); ?>">Read more</a>
                         </div>
                       </div>
+                 <?php endif; ?>
+
 
                   <?php $i++;
 
