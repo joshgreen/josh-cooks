@@ -23,8 +23,6 @@ get_header(); ?>
         ));
 
 
-
-
       // The Loop
           if ( $queryObject->have_posts() ) :
               $i = 0;
