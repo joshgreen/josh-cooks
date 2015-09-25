@@ -31,15 +31,17 @@ get_header(); ?>
                   if ( $i == 0 ) : ?>
                     <div class="first-blog-posts">
                       <?php if (has_post_thumbnail()) {
-                      echo '<div class="">';
+                      echo '<div class="first-image">';
                       echo the_post_thumbnail('blog-thumb');
                       echo '</div>';
                           }
                       ?>
-                      <h2 class="blog-title"><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h2>
-                      <p><?php the_excerpt(); ?></p>
-                      <div class="buttonbox">
-                        <a href="<?php the_permalink(); ?>" class="button-primary" title="<?php the_title(); ?>">Read more</a>
+                      <div class="post-box">
+                        <h2 class="blog-title"><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h2>
+                        <p><?php the_excerpt(); ?></p>
+                        <div class="buttonbox">
+                          <a href="<?php the_permalink(); ?>" class="button-primary" title="<?php the_title(); ?>">Read more</a>
+                        </div>
                       </div>
                     </div>
                     <div class="small-blogs">

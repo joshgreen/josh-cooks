@@ -14,6 +14,7 @@ get_header(); ?>
 
 	<div id="primary" class="content-area max">
 		<main id="main" class="site-main" role="main">
+		<h1>recipe.php</h1>
 			<?php
 			    $args = array(
 			      'post_type' => 'recipe',

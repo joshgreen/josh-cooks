@@ -1037,6 +1037,11 @@ form {
 
 /* Small menu.
  */
+/* line 58, ../sass/_menu.sass */
+.menu-toggle {
+  display: none;
+}
+
 @media screen and (max-width: 600px) {
   /* line 62, ../sass/_menu.sass */
   .menu-toggle {
@@ -1292,4 +1297,28 @@ a.button-primary:focus, a.button-primary:active, input[type="reset"]:focus, inpu
 /* line 10, ../sass/_footer.sass */
 .site-info {
   text-align: center;
+}
+
+/* line 1, ../sass/_blog.sass */
+.first-blog-posts {
+  height: 800px;
+  overflow: hidden;
+  position: relative;
+}
+/* line 2, ../sass/_mixins.sass */
+.first-blog-posts:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* line 8, ../sass/_blog.sass */
+.post-box {
+  width: 500px;
+  padding: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.8);
 }
