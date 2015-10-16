@@ -38,20 +38,67 @@
 <div id="page" class="hfeed site">
   <a class="skip-link" href="#content"><?php _e( 'Skip to content', 'josh-cooks' ); ?></a>
 
-  <header id="masthead" class="site-header" role="banner">
+<header id="masthead" class="site-header" role="banner">
+  <div class="site-branding">
+    <div class="logo">
+      <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+      <h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
+    </div>
+  </div><!-- .site-branding -->
+  <nav>
+    <?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
+    <!-- <ul>
+      <li>
+        <a href="">Home</a>
+      </li>
+      <li>
+        <a href="">About</a>
+        <ul class="mega-dropdown">
+          <li class="row">
+            <ul class="mega-col">
+              <li><a href="#">About</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+            <ul class="mega-col">
+              <li><a href="#">Help</a></li>
+              <li><a href="#">Pricing</a></li>
+              <li><a href="#">Team</a></li>
+              <li><a href="#">Services</a></li>
+            </ul>
+            <ul class="mega-col">
+              <li><a href="#">Coming Soon</a></li>
+              <li><a href="#">404 Error</a></li>
+              <li><a href="#">Search</a></li>
+              <li><a href="#">Author Page</a></li>
+            </ul>
+            <ul class="mega-col">
+              <li><a href="#">Full Width</a></li>
+              <li><a href="#">Right Column</a></li>
+              <li><a href="#">Left Column</a></li>
+              <li><a href="#">Maintenance</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="">Contact</a>
+          <ul>
+            <li><a href="#">About Version</a></li>
+            <li><a href="#">About Version</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+      </li>
+      <li>
+        <a href="">Portfolio</a>
+      </li>
+      <li>
+        <a href="">Team</a>
+      </li>
+    </ul> -->
+  </nav>
+  </header>
 
-    <div class="max">
-      <div class="site-branding">
-        <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-        <h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
-      </div><!-- .site-branding -->
-
-      <nav id="site-navigation" class="main-navigation" role="navigation">
-        <button class="menu-toggle" aria-controls="menu" aria-expanded="false"><?php _e( 'Primary Menu', 'josh-cooks' ); ?></button>
-        <?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
-      </nav><!-- #site-navigation -->
-    </div> <!-- .max -->
-
-  </header><!-- #masthead -->
-
-  <div id="content" class="site-content">
+  <div id="content" class="site-content" style="float: left">

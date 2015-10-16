@@ -1,3 +1,7 @@
+(function($) {
+    // Inside of this function, $() will work as an alias for jQuery()
+    // and other libraries also using $ will not be accessible under this shortcut
+
 // Equal height columns
 equalheight = function(container){
 
@@ -33,3 +37,17 @@ var currentTallest = 0,
 $(window).load(function() {
   equalheight('.blog-posts');
 });
+
+// Widow Fix
+$("h2.blog-title").each(function() {
+  var wordArray = $(this).text().split(" ");
+  if (wordArray.length > 1) {
+    wordArray[wordArray.length-2] += "&nbsp;" + wordArray[wordArray.length-1];
+    wordArray.pop();
+    $(this).html(wordArray.join(" "));
+  }
+});
+
+
+// End wrapper
+})(jQuery);
