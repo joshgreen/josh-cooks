@@ -14,6 +14,8 @@ get_header(); ?>
 
       <?php get_template_part( 'content', 'sousviderecipe' ); ?>
 
+      <?php naked_social_share_buttons(); ?>
+
       <?php the_post_navigation(); ?>
 
       <?php

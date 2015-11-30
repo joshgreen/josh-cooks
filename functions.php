@@ -53,6 +53,9 @@ function josh_cooks_setup() {
     'primary' => __( 'Primary Menu', 'josh-cooks' ),
   ) );
 
+
+
+
   /*
    * Switch default core markup for search form, comment form, and comments
    * to output valid HTML5.
@@ -103,8 +106,6 @@ function josh_cooks_scripts() {
   wp_enqueue_style( 'josh-cooks-style', get_stylesheet_uri() );
 
   wp_enqueue_script( 'josh-cooks-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
-
-    wp_enqueue_script( 'josh-cooks-js', get_template_directory_uri() . '/js/min/all-scripts-min.js', array(jquery), '20150530', false );
 
   wp_enqueue_script( 'josh-cooks-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 
@@ -157,3 +158,163 @@ function new_excerpt_more($more) {
        return '<a href="'. get_permalink($post->ID) . '">...</a>';
 }
 add_filter('excerpt_more', 'new_excerpt_more');
+
+
+/**
+* Change Excerpt length
+*/
+function my_excerpt_length($length) {
+return 30;
+}
+add_filter('excerpt_length', 'my_excerpt_length');
+
+/**
+* Remove class and ID’s from Custom Menus
+*/
+// add_filter('nav_menu_css_class', 'my_css_attributes_filter', 100, 1);
+// add_filter('nav_menu_item_id', 'my_css_attributes_filter', 100, 1);
+// add_filter('page_css_class', 'my_css_attributes_filter', 100, 1);
+// function my_css_attributes_filter($var) {
+//   return is_array($var) ? array_intersect($var, array('current-menu-item')) : '';
+// }
+
+/**
+* Breadcrumbs without plugin
+*/
+function the_breadcrumb() {
+    echo '<ul id="crumbs">';
+  if (!is_home()) {
+    echo '<li><a href="';
+    echo get_option('home');
+    echo '">';
+    echo 'Home';
+    echo "</a></li>";
+    if (is_category() || is_single()) {
+      echo '<li>';
+      the_category(' </li><li> ');
+      if (is_single()) {
+        echo "</li><li>";
+        the_title();
+        echo '</li>';
+      }
+    } elseif (is_page()) {
+      echo '<li>';
+      echo the_title();
+      echo '</li>';
+    }
+  }
+  elseif (is_tag()) {single_tag_title();}
+  elseif (is_day()) {echo"<li>Archive for "; the_time('F jS, Y'); echo'</li>';}
+  elseif (is_month()) {echo"<li>Archive for "; the_time('F, Y'); echo'</li>';}
+  elseif (is_year()) {echo"<li>Archive for "; the_time('Y'); echo'</li>';}
+  elseif (is_author()) {echo"<li>Author Archive"; echo'</li>';}
+  elseif (isset($_GET['paged']) && !empty($_GET['paged'])) {echo "<li>Blog Archives"; echo'</li>';}
+  elseif (is_search()) {echo"<li>Search Results"; echo'</li>';}
+  echo '</ul>';
+}
+
+
+/**
+ * Prints jQuery in footer on front-end.
+ */
+function ds_print_jquery_in_footer( &$scripts) {
+  if ( ! is_admin() )
+    $scripts->add_data( 'jquery', 'group', 1 );
+}
+add_action( 'wp_default_scripts', 'ds_print_jquery_in_footer' );
+
+/**
+* Add custom post type to feed
+*/
+function myfeed_request($qv) {
+    if (isset($qv['feed']) && !isset($qv['post_type']))
+        $qv['post_type'] = array('post', 'recipes', 'ingerdients', 'sousviderecipe');
+    return $qv;
+}
+add_filter('request', 'myfeed_request');
+
+/**
+* Add custom post type to feed
+*/
+add_filter('nav_menu_css_class' , 'special_nav_class' , 10 , 2);
+function special_nav_class($classes, $item){
+     if(is_single() && $item->title == "Blog"){ //Notice you can change the conditional from is_single() and $item->title
+             $classes[] = "special-class";
+     }
+     return $classes;
+}
+
+
+// class Custom_Walker_Nav_Menu extends Walker_Nav_Menu {
+//   function start_el ( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+//     // Copy all the start_el code from source, and modify
+
+
+
+//     //
+//   }
+
+//   function end_el( &$output, $item, $depth = 0, $args = array() ) {
+//     // Copy all the end_el code from source, and modify
+//   }
+// }
+
+class Custom_Walker_Nav_Menu extends Walker_Nav_Menu
+{
+      function start_el(&$output, $item, $depth, $args)
+      {
+           global $wp_query;
+           $indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
+
+           $class_names = $value = '';
+
+           $classes = empty( $item->classes ) ? array() : (array) $item->classes;
+
+           $class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) );
+           $class_names = ' class="'. esc_attr( $class_names ) . '"';
+
+           $output .= $indent . '<li id="menu-item-'. $item->ID . '"' . $value . $class_names .'>';
+
+           $attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
+           $attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
+           $attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
+           $attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
+
+           $prepend = '';
+           $append = '';
+           $description  = ! empty( $item->description ) ? '<span>'.esc_attr( $item->description ).'</span>' : '';
+
+           if($depth != 0)
+           {
+                     $description = $append = $prepend = "";
+           }
+
+            $item_output = $args->before;
+            $item_output .= '<a'. $attributes .'>';
+            $item_output .= $args->link_before .$prepend.apply_filters( 'the_title', $item->title, $item->ID ).$append;
+            $item_output .= $description.$args->link_after;
+            $item_output .= '</a>';
+            $item_output .= $args->after;
+
+            $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
+            }
+}
+
+add_filter( 'wp_nav_menu_objects', 'add_menu_parent_class' );
+function add_menu_parent_class( $items ) {
+
+  $parents = array();
+  foreach ( $items as $item ) {
+    if ( $item->menu_item_parent && $item->menu_item_parent > 0 ) {
+      $parents[] = $item->menu_item_parent;
+    }
+  }
+
+  foreach ( $items as $item ) {
+    if ( in_array( $item->ID, $parents ) ) {
+      $item->classes[] = 'dropdown';
+    }
+  }
+
+  return $items;
+}

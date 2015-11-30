@@ -1,0 +1,2 @@
+Picture sizes
+max-size: 2280 x 1922 (from I am a food blog)

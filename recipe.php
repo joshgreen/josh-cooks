@@ -14,6 +14,7 @@ get_header(); ?>
 
 	<div id="primary" class="content-area max">
 		<main id="main" class="site-main" role="main">
+		<h4><?php the_breadcrumb(); ?></h4>
 		<h1>recipe.php</h1>
 			<?php
 			    $args = array(

@@ -45,60 +45,20 @@
       <h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
     </div>
   </div><!-- .site-branding -->
-  <nav>
-    <?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
-    <!-- <ul>
-      <li>
-        <a href="">Home</a>
-      </li>
-      <li>
-        <a href="">About</a>
-        <ul class="mega-dropdown">
-          <li class="row">
-            <ul class="mega-col">
-              <li><a href="#">About</a></li>
-              <li><a href="#">About</a></li>
-              <li><a href="#">Contact</a></li>
-              <li><a href="#">Contact</a></li>
-            </ul>
-            <ul class="mega-col">
-              <li><a href="#">Help</a></li>
-              <li><a href="#">Pricing</a></li>
-              <li><a href="#">Team</a></li>
-              <li><a href="#">Services</a></li>
-            </ul>
-            <ul class="mega-col">
-              <li><a href="#">Coming Soon</a></li>
-              <li><a href="#">404 Error</a></li>
-              <li><a href="#">Search</a></li>
-              <li><a href="#">Author Page</a></li>
-            </ul>
-            <ul class="mega-col">
-              <li><a href="#">Full Width</a></li>
-              <li><a href="#">Right Column</a></li>
-              <li><a href="#">Left Column</a></li>
-              <li><a href="#">Maintenance</a></li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-      <li class="dropdown">
-        <a href="">Contact</a>
-          <ul>
-            <li><a href="#">About Version</a></li>
-            <li><a href="#">About Version</a></li>
-            <li><a href="#">Contact Us</a></li>
-            <li><a href="#">Contact Us</a></li>
-          </ul>
-      </li>
-      <li>
-        <a href="">Portfolio</a>
-      </li>
-      <li>
-        <a href="">Team</a>
-      </li>
-    </ul> -->
-  </nav>
-  </header>
+  <div id="header">
+    <nav>
+       <?php wp_nav_menu(array(
+        'theme_location' => 'primary',
+        'container' => false,
+        'menu_id' => '',
+        'depth' => 2,
+        // This one is the important part:
+        'walker' => new Custom_Walker_Nav_Menu
+      )); ?>
 
-  <div id="content" class="site-content" style="float: left">
+
+    </nav>
+  </div> <!-- .site-navigation -->
+</header>
+
+<div id="content" class="site-content" style="float: left">

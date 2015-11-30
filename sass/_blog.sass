@@ -5,7 +5,6 @@
   position: relative
   z-index: 1
 
-
 .post-box
   width: 500px
   padding: 20px
@@ -14,3 +13,49 @@
   left: 50%
   transform: translate(-50%, -50%)
   background: rgba(255,255,255,0.8)
+
+// Blog
+.small-blogs
+  margin: 0 auto
+  max-width: 90%
+  padding: 2rem 0 0 0
+  +group
+  +breakpoint(small)
+    max-width: 95%
+  +breakpoint(medium)
+    max-width: 90%
+  +breakpoint(large)
+    max-width: 95%
+
+.blog-posts
+  +col-1-4
+  padding: 1rem 1rem  2rem 1rem
+  margin-bottom: 2rem
+  +group
+  height: 450px
+  overflow: hidden
+
+  .blog-image
+    height: 190px
+    overflow: hidden
+    max-height: 190px
+
+  .blog-title
+    text-align: center
+    height: 65px
+    max-height: 65px
+    overflow: hidden
+    h2
+      font-size: 1.1rem
+
+  .blog-text
+    height: 135px
+    overflow: hidden
+    // max-height: 115px
+    p
+      font-size: 0.8rem
+
+  .blog-button
+    height: 50px
+    text-align: center
+    padding: 0 0 1rem 0
