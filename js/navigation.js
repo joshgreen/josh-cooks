@@ -17,4 +17,17 @@
 });
 
 
+var headerView = function () {
+    var scroll = $(window).scrollTop();
+    if (scroll <= 115) {
+        $("body").removeClass("compact");
+    } else {
+        $("body").addClass("compact");
+    }
+}
+headerView();
+$(window).scroll(function () {
+    headerView();
+});
+
 })(jQuery);

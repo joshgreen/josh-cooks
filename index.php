@@ -18,7 +18,7 @@ get_header(); ?>
       <?php
       $queryObject = new  WP_Query( array(
         'showposts' => 5,
-        'post_type' => array('post', 'recipe'),
+        'post_type' => array('post', 'recipe', 'sousviderecipe'),
         'orderby' => 0,
         ));
 
@@ -32,7 +32,7 @@ get_header(); ?>
                     <div class="first-blog-posts">
                       <?php if (has_post_thumbnail()) {
                       echo '<div class="first-image">';
-                      echo the_post_thumbnail('blog-thumb');
+                      echo the_post_thumbnail('feature-image');
                       echo '</div>';
                           }
                       ?>

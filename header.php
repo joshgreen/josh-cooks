@@ -41,8 +41,9 @@
 <header id="masthead" class="site-header" role="banner">
   <div class="site-branding">
     <div class="logo">
-      <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-      <h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
+      <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+      <img src="<?php bloginfo('template_url'); ?>/images/logo-1.png" alt="<?php bloginfo( 'name' ); ?>" class="logo"></a></h1>
+
     </div>
   </div><!-- .site-branding -->
   <div id="header">
@@ -61,4 +62,4 @@
   </div> <!-- .site-navigation -->
 </header>
 
-<div id="content" class="site-content" style="float: left">
+<div id="content" class="site-content">

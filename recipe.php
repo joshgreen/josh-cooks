@@ -15,7 +15,7 @@ get_header(); ?>
 	<div id="primary" class="content-area max">
 		<main id="main" class="site-main" role="main">
 		<h4><?php the_breadcrumb(); ?></h4>
-		<h1>recipe.php</h1>
+<!-- 		<h1>recipe.php</h1> -->
 			<?php
 			    $args = array(
 			      'post_type' => 'recipe',
@@ -43,6 +43,9 @@ get_header(); ?>
 
 			            	<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 			            </a>
+			            <div>
+			            	<?php the_excerpt(); ?>
+			            </div>
 
 
 			          </div> <!-- .email-design-main -->

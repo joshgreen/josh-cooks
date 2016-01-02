@@ -105,7 +105,7 @@ add_action( 'widgets_init', 'josh_cooks_widgets_init' );
 function josh_cooks_scripts() {
   wp_enqueue_style( 'josh-cooks-style', get_stylesheet_uri() );
 
-  wp_enqueue_script( 'josh-cooks-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
+  wp_enqueue_script( 'josh-cooks-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151201', true );
 
   wp_enqueue_script( 'josh-cooks-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 
@@ -147,11 +147,15 @@ add_theme_support( 'post-thumbnails' );
 if ( function_exists( 'add_theme_support' ) ) {
 add_theme_support( 'post-thumbnails' );
 add_image_size('large-thumb', 1060, 650, true);
+add_image_size('feature-image', 2280, 1922);
 set_post_thumbnail_size( 150, 150, true ); // default Post Thumbnail dimensions (cropped)
 // additional image sizes
 // delete the next line if you do not need additional image sizes
 add_image_size( 'blog-thumb', 800, 9999 ); //300 pixels wide (and unlimited height)
 }
+
+add_image_size( 'custom-size', 220, 180 );
+
 // Replaces the excerpt "more" text by a link
 function new_excerpt_more($more) {
        global $post;

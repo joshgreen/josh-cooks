@@ -1,9 +1,24 @@
 .site-header
   width: 100%
-  position: relative
+  position: fixed
+  z-index: 10
+  top: 0
+  left: 0
   margin: 0
   padding: 0
   background: $header
+  font-family: 'Oxygen', 'Open Sans', sans-serif
+  font-weight: 400
+  letter-spacing: 0.1rem
+.site-header #compact
+  +box-shadow(0 1px 4px rgba(0, 0, 0, .2))
+  display: block
+  position: fixed
+  z-index: 9999!important
+  top: 0
+  left: 0
+
+
 .site-header:after
   content: ""
   clear: both
@@ -32,8 +47,12 @@ nav .dropdown
 nav li a
   float: left
   padding: 35px
+
+.compact nav li a
+  padding: 23px
+
 nav li a:hover
-  background: darken($lightbg, 10%)
+  background: darken($header, 10%)
 nav li ul
   display: none
 nav li:hover ul
@@ -113,6 +132,8 @@ nav li li a:hover
     display: inline
     top: 45px
     cursor: pointer
+  .compact #menu-icon
+    top: 37px
   #menu-icon.active .first
     transform: rotate(45deg)
     -webkit-transform: rotate(45deg)

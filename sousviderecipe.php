@@ -14,9 +14,9 @@ get_header(); ?>
 
 	<div id="primary" class="content-area max">
 		<main id="main" class="site-main" role="main">
-		<h1>Sousviderecipe.php</h1>
+<!-- 		<h1>Sousviderecipe.php</h1> -->
 
-			            <table>
+			            <table class="sous-vide-table">
 			            	<tr>
 			            		<th>Food</th>
 			            		<th>Temperature</th>
