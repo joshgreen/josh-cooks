@@ -10,6 +10,29 @@
   left: -9999px !important
 
 =vertical-align
-  position: relative
+  position: absolute
   top: 50%
   +transform(translateY(-50%))
+
+=centered
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+
+
+=b-pad
+  padding-bottom: 4rem
+  +breakpoint(xlarge)
+    padding-bottom: 4rem
+  +breakpoint(large)
+    padding-bottom: 4rem
+  +breakpoint(medium)
+    padding-bottom: 2rem
+  +breakpoint(small)
+    padding-bottom: 2rem
+
+=listreset
+  list-style: none
+  margin: 0
+  padding: 0

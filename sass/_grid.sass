@@ -2,8 +2,17 @@
   +box-sizing(border-box)
 
 =breakpoint($point)
-  @if $point == large
-    @media (min-width: 1000px)
+  @if $point == xxxlarge
+    @media (min-width: 2500px)
+      @content
+  @else if $point == xxlarge
+    @media (min-width: 1900px) and (max-width: 2499px)
+      @content
+  @else if $point == xlarge
+    @media (min-width: 1500px) and (max-width: 1899px)
+      @content
+  @else if $point == large
+    @media (min-width: 1000px) and (max-width: 1499px)
       @content
   @else if $point == medium
     @media (min-width: 768px) and (max-width: 999px)
@@ -22,6 +31,12 @@
   +breakpoint(medium)
     max-width: 90%
   +breakpoint(large)
+    max-width: 85%
+  +breakpoint(xlarge)
+    max-width: 75%
+  +breakpoint(xxlarge)
+    max-width: 75%
+  +breakpoint(xxxlarge)
     max-width: 75%
 
 =col-full

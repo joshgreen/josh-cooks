@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: FRONT
+ * The main template file.
  *
  * This is the most generic template file in a WordPress theme
  * and one of the two required files for a theme (the other being style.css).
@@ -15,11 +15,9 @@ get_header(); ?>
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
 
-<?php
-if ( get_query_var('paged') ) { $paged = get_query_var('paged'); }
-elseif ( get_query_var('page') ) { $paged = get_query_var('page'); }
-else { $paged = 1; }
-      $the_query  = new  WP_Query( array(
+      <?php
+
+      $queryObject = new  WP_Query( array(
         'showposts' => 5,
         'post_type' => array('post', 'recipe', 'sousviderecipe'),
         'paged' => $paged,
@@ -29,10 +27,10 @@ else { $paged = 1; }
 
 
       // The Loop
-          if ( $the_query ->have_posts() ) :
+          if ( $queryObject->have_posts() ) :
               $i = 0;
-              while ( $the_query ->have_posts() ) :
-                  $the_query ->the_post();
+              while ( $queryObject->have_posts() ) :
+                  $queryObject->the_post();
                   if ( $i == 0 ) : ?>
                     <div class="first-blog-posts">
                       <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" class="blog-link">
@@ -44,7 +42,7 @@ else { $paged = 1; }
                             }
                         ?>
                         <div class="post-box">
-                          <h1 class="blog-title color-primary"><?php the_title(); ?></h1>
+                          <h2 class="blog-title"><?php the_title(); ?></h2>
                           <?php the_excerpt(); ?>
                         </div>
                       </a>
@@ -70,11 +68,6 @@ else { $paged = 1; }
 
                       </a>
                     </div>
-
-
-
-                   <?php   ?>
-
                     <?php endif; ?>
 
 
@@ -83,30 +76,10 @@ else { $paged = 1; }
 
               endwhile;
 
-//echo  the_posts_navigation();
-?>
-
-<section class="bottom-pagination">
 
 
-<?php if ($the_query->max_num_pages > 1) { // check if the max number of pages is greater than 1  ?>
-  <nav class="prev-next-posts">
-    <h4>Navigation</h4>
-    <div class="prev-posts-link">
-      <?php echo get_next_posts_link( 'Older Entries', $the_query->max_num_pages ); // display older posts link ?>
-    </div>
-    <div class="next-posts-link">
-      <?php echo get_previous_posts_link( 'Newer Entries' ); // display newer posts link ?>
-    </div>
-  </nav>
-
-<?php } ?>
-</section>
-<?php
 
           endif;?>
-
-
           </div> <!-- .small-blogs -->
 
 

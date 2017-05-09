@@ -35,7 +35,12 @@ var currentTallest = 0,
 }
 
 $(window).load(function() {
-  equalheight('.blog-posts');
+  equalheight('.blog-posts, .holder');
+});
+
+
+$(window).resize(function(){
+  equalheight('.blog-posts, .holder');
 });
 
 // Widow Fix
@@ -47,6 +52,8 @@ $("h2.blog-title").each(function() {
     $(this).html(wordArray.join(" "));
   }
 });
+
+
 
 
 // End wrapper

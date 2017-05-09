@@ -1,0 +1,48 @@
+.posts-navigation
+  display: block
+  +col-full
+  margin: 4rem 0
+
+.site-pagination
+  +col-full
+
+.nav-links
+  +col-full
+
+.prev-next-posts
+  background: $lightbg
+  +group
+  overflow: hidden
+  display: inline-block
+  text-align: center
+  padding: 1rem
+  margin: 0 auto 2rem auto
+  width: 450px
+  +breakpoint(small)
+    +col-full
+
+
+.nav-previous
+  float: left
+
+.nav-next
+  float: right
+
+.prev-posts-link, .next-posts-link
+  font-family: 'Oxygen', 'Open Sans', sans-serif
+  +col-1-2
+  a
+    background: $primary
+    display: block
+    padding: 1rem
+    +link-colors(white,white,white,white,white)
+    border-bottom: none
+
+.prev-posts-link
+  padding: 0 0.5rem 0 0
+
+.next-posts-link
+  padding: 0 0 0 0.5rem
+
+.bottom-pagination
+  +col-full

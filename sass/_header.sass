@@ -1,13 +1,24 @@
 // .site-header
 
-
-
 .site-branding
   float: left
-  padding: 8px 35px
+  position: relative
+  height: 80px
+  padding: 20px 35px
+  max-width: 240px
+  width: 100%
+.compact .site-branding
+  max-width: 162px
+
+
+.current-item
+  background: darken($header, 10%)
+
 
 .compact .site-branding
-  padding: 6px 25px
+  padding: 0 25px
+  height: 50px
+  position: relative
 
 .site-title
   text-transform: capitalize
@@ -22,10 +33,15 @@
       +text-shadow(none)
 
 .logo
-  max-width: 230px
+  max-width: 170px
+  +vertical-align
+  width: 100%
+  height: auto
+  // transition-timing-function: ease-out
+  // transition-duration: .8s
 
 
 .compact .logo
-  max-width: 180px
-
+  max-width: 110px
+  // +vertical-align
 

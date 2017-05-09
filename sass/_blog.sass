@@ -1,20 +1,48 @@
+.recipe-list
+  margin: 0
+  padding: 0
+  list-style: none
+
+
 .first-blog-posts
   +group
   height: 800px
   overflow: hidden
   position: relative
   z-index: 1
+  +breakpoint(small)
+    height: 500px
+
+.first-image
+  position: relative
+  height: 800px
+  +breakpoint(small)
+    height: 500px
+  img
+    +centered
+  +breakpoint(medium)
+    img
+      width: 1000px
+      +centered
+
+  +breakpoint(small)
+    img
+      width: 1000px
+      +centered
+
+
 
 .post-box
   width: 500px
-  padding: 20px
+  padding: 0.8rem 2.5rem
   position: absolute
   top: 50%
   left: 50%
   transform: translate(-50%, -50%)
-  background: rgba(255,255,255,0.8)
-  .buttonbox
-    text-align: center
+  background: rgba(255,255,255,0.75)
+  +breakpoint(small)
+    width: 80%
+
 
 // Blog
 .small-blogs
@@ -31,33 +59,73 @@
 
 .blog-posts
   +col-1-4
-  padding: 1rem 1rem  2rem 1rem
-  margin-bottom: 2rem
+  padding: 1rem 1rem  0 1rem
+  margin-bottom: 1rem
   +group
-  height: 450px
   overflow: hidden
-
   .blog-image
     height: 190px
     overflow: hidden
-    max-height: 190px
+    position: relative
+    img
+      +centered
+    +breakpoint(xxxlarge)
+      height: 380px
+    +breakpoint(xxlarge)
+      height: 340px
+    +breakpoint(xlarge)
+      height: 300px
+    +breakpoint(large)
+      height: 190px
 
+.blog-link
+  text-decoration: none
+  color: inherit
+  display: block
+  background: none
+  border: 0
+  cursor: pointer
+  width: 100%
+  height: auto
+  &:hover, &:active, &:focus, &:visited
+    text-decoration: none
+    color: inherit
+    display: block
+    background: none
+    border: 0
+
+
+.blog-title
+  text-align: center
+  overflow: hidden
+
+
+.small-blogs
   .blog-title
-    text-align: center
-    height: 65px
-    max-height: 65px
-    overflow: hidden
-    h2
-      font-size: 1.1rem
+    height: 90px
+    +breakpoint(xxlarge)
+      height: 60px
+    +breakpoint(medium)
+      height: 60px
+    +breakpoint(small)
+      height: 60px
 
   .blog-text
-    height: 135px
     overflow: hidden
-    // max-height: 115px
-    p
-      font-size: 0.8rem
 
-  .blog-button
-    height: 50px
-    text-align: center
-    padding: 0 0 1rem 0
+
+  // Single
+
+.entry-header
+  display: block
+  text-align: center
+  padding: 6rem 0
+
+.entry-meta
+  font-family: 'Oxygen', 'Open Sans', sans-serif
+  text-transform: uppercase
+  font-size: 0.9em
+  color: $lightgrey
+
+.entry-content ul, ol
+  font-family: 'Oxygen', 'Open Sans', sans-serif

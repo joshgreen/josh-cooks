@@ -2,24 +2,39 @@ body
   background: rgba(250,250,250, 1.0)
   text-rendering: optimizeLegibility
 
+.site-content
+  min-height: calc(100vh - 140px)
+  padding: 0
 
 .site-main
   +col-full
   padding: 0
+  margin-top: 80px
+
+
 
 // .sidebar
 
 img
   width: 100%
   height: auto
+  display: block
 
-.max, .entry-header, .entry-content, .entry-footer, .site-info, .comments-area, .navigation[role=navigation]
+.max, .entry-header, .entry-content, .entry-footer, .site-info, .comments-area
   +max
+
+nav.post-navigation
+  +max
+  display: block
+  width: 100%
+  float: none
 
 
 .skip-link
   +screenreader
 
+.screen-reader-text
+  +screenreader
 
 // Tabular data
 
@@ -67,4 +82,31 @@ a.button-primary, input[type="reset"], input[type="submit"]
     text-shadow: none
     border: none
 
+// Breadcrumbs
+#crumbs
+  +listreset
+  +col-full
+  margin: 2rem 0 1rem 0
+  li
+    display: inline-block
+    padding:  0 0.5rem 0 0
+    &::after
+      content: ' >'
+  li:last-of-type
+    &:after
+      content: ''
 
+// Naked Social
+.naked-social-share
+  ul
+    +listreset
+    text-align: center
+  li
+    display: inline
+    padding: 1rem 2rem
+  i
+    font-size: 1.4em
+  span
+    +screenreader
+  a
+    +link-colors($lightgrey,$lightgrey,$lightgrey,$lightgrey,$lightgrey)

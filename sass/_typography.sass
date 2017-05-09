@@ -1,29 +1,40 @@
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,400italic,300italic,300,700,700italic)
-@import url(http://fonts.googleapis.com/css?family=Lato:700)
-@import url(http://fonts.googleapis.com/css?family=Merriweather:400,400italic,700,700italic)
-@import url(https://fonts.googleapis.com/css?family=Oxygen:400,300,700)
+@import url('https://fonts.googleapis.com/css?family=Amiri:400,400i,700')
+@import url('https://fonts.googleapis.com/css?family=Raleway:900')
+@import url('https://fonts.googleapis.com/css?family=Oxygen')
 
 // font-family: 'Lato', sans-serif
 
 
-body
-  color: #404040
+html
+  font-family: 'Amiri', Georgia, Times, 'Times New Roman', serif
+  font-size: 16px
+  font-weight: 100
   line-height: 1.5
-  font-family: 'Merriweather', Georgia, Times, 'Times New Roman', serif
+  color: #404040
   -webkit-font-smoothing: antialiased
   text-rendering: optimizelegibility
+  -ms-text-size-adjust: 100%
+  -webkit-text-size-adjust: 100%
+  @media (max-width: 900px)
+    font-size: 14px
+  @media (max-width: 500px)
+    font-size: 12px
+
 
 h1, h2, h3, h4, h5, h6
-  clear: both
-  font-family: 'Merriweather', Georgia, Times, 'Times New Roman', serif
-  -webkit-font-smoothing: antialiased
+  font-family: 'Raleway', sans-serif
+  font-weight: 900
+
+h1, h2, h3, h4, h5, h6, p, ul, ol
+  margin-top: 0
+  margin-bottom: 1rem
   a
     text-decoration: none
     border: 0
 
 h1
   margin-bottom: 1rem
-  line-height: 1
+  line-height: 1.2
   letter-spacing: -0.03125em
   margin: 0.5em 0
 
@@ -60,7 +71,7 @@ a
   text-decoration: none
   border-bottom: 1px solid rgba(34,85,221,0.1)
   &:active, &:hover
-    outline: 0
+    outline: none
 
 a:focus
   +text-shadow($link-focus 0 0 5px)
@@ -94,6 +105,8 @@ a[rel="tag"]
 ////
 
 p
+  font-size: 1.4em
+  line-height: 1.4
   margin-bottom: 1.5em
 
 b, strong

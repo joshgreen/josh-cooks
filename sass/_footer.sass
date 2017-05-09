@@ -1,11 +1,14 @@
 .site-footer
   background: $footer
   color: white
-  padding: 2rem
+  height: 100px
+  +group
+  position: relative
   a
     +link-colors(white,white,white,white,white)
     &:focus
       +text-shadow(none)
 
 .site-info
+  +centered
   text-align: center

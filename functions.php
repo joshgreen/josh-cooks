@@ -105,9 +105,9 @@ add_action( 'widgets_init', 'josh_cooks_widgets_init' );
 function josh_cooks_scripts() {
   wp_enqueue_style( 'josh-cooks-style', get_stylesheet_uri() );
 
-  wp_enqueue_script( 'josh-cooks-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151201', true );
+  wp_enqueue_script( 'josh-cooks-my', get_template_directory_uri() . '/js/my.js', array(), '', true );
 
-  wp_enqueue_script( 'josh-cooks-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
+  wp_enqueue_script( 'josh-cooks-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151201', true );
 
   if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
     wp_enqueue_script( 'comment-reply' );
@@ -159,7 +159,8 @@ add_image_size( 'custom-size', 220, 180 );
 // Replaces the excerpt "more" text by a link
 function new_excerpt_more($more) {
        global $post;
-       return '<a href="'. get_permalink($post->ID) . '">...</a>';
+       // return '<a href="'. get_permalink($post->ID) . '">...</a>';
+       return '';
 }
 add_filter('excerpt_more', 'new_excerpt_more');
 
@@ -171,6 +172,8 @@ function my_excerpt_length($length) {
 return 30;
 }
 add_filter('excerpt_length', 'my_excerpt_length');
+
+
 
 /**
 * Remove class and ID’s from Custom Menus
@@ -248,6 +251,11 @@ function special_nav_class($classes, $item){
      return $classes;
 }
 
+// Featured images
+add_theme_support( 'post-thumbnails' );
+add_image_size('large-thumb', 1060, 650, true);
+add_image_size('super-thumb', 2080, auto, true);
+
 
 // class Custom_Walker_Nav_Menu extends Walker_Nav_Menu {
 //   function start_el ( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
@@ -322,3 +330,80 @@ function add_menu_parent_class( $items ) {
 
   return $items;
 }
+
+
+// move scripts to footer
+
+function remove_head_scripts() {
+   remove_action('wp_head', 'wp_print_scripts');
+   remove_action('wp_head', 'wp_print_head_scripts', 9);
+   remove_action('wp_head', 'wp_enqueue_scripts', 1);
+
+   add_action('wp_footer', 'wp_print_scripts', 5);
+   add_action('wp_footer', 'wp_enqueue_scripts', 5);
+   add_action('wp_footer', 'wp_print_head_scripts', 5);
+}
+add_action( 'wp_enqueue_scripts', 'remove_head_scripts' );
+
+// remove junk from head
+// remove_action('wp_head', 'rsd_link');
+// remove_action('wp_head', 'wp_generator');
+// remove_action('wp_head', 'feed_links', 2);
+// remove_action('wp_head', 'index_rel_link');
+// remove_action('wp_head', 'wlwmanifest_link');
+// remove_action('wp_head', 'feed_links_extra', 3);
+// remove_action('wp_head', 'start_post_rel_link', 10, 0);
+// remove_action('wp_head', 'parent_post_rel_link', 10, 0);
+// remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0);
+
+// Remove login errors
+add_filter('login_errors', create_function('$a', "return null;"));
+
+// hide Admin bar
+show_admin_bar( false );
+
+// Remove the wordpress update notification for all users except sysadmin
+   global $user_login;
+   get_currentuserinfo();
+   if ($user_login !== "admin") { // change admin to the username that gets the updates
+    add_action( 'init', create_function( '$a', "remove_action( 'init', 'wp_version_check' );" ), 2 );
+    add_filter( 'pre_option_update_core', create_function( '$a', "return null;" ) );
+   }
+
+// Enable GZIP output compression
+ if(extension_loaded("zlib") && (ini_get("output_handler") != "ob_gzhandler"))
+   add_action('wp', create_function('', '@ob_end_clean();@ini_set("zlib.output_compression", 1);'));
+
+// Change the login logo with yours
+ function my_custom_login_logo() {
+    echo '<style type="text/css">
+        h1 a { background-image:url('.get_bloginfo('template_directory').'/images/forageorporridge-login.svg) !important; }
+    </style>';
+}
+
+add_action('login_head', 'my_custom_login_logo');
+
+
+
+//Add custom post types to categories
+add_filter('pre_get_posts', 'query_post_type');
+function query_post_type($query) {
+  if( is_category() ) {
+    $post_type = get_query_var('post_type');
+    if($post_type)
+        $post_type = $post_type;
+    else
+        $post_type = array('nav_menu_item', 'post', 'recipes', 'ingerdients', 'sousviderecipe'); // don't forget nav_menu_item to allow menus to work!
+    $query->set('post_type',$post_type);
+    return $query;
+    }
+}
+
+
+
+// Image class
+function image_tag_class($class) {
+    $class .= ' jc-img';
+    return $class;
+}
+add_filter('get_image_tag_class', 'image_tag_class' );

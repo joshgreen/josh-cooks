@@ -33,6 +33,7 @@
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
+		<?php naked_social_share_buttons(); ?>
 		<?php josh_cooks_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->

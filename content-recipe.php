@@ -6,6 +6,16 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
+	<header class="entry-header">
+<!-- 	<h1>content-recipe.php</h1> -->
+		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+
+		<div class="entry-meta">
+			 <?php the_time('jS F Y') ?>
+		</div><!-- .entry-meta -->
+	</header><!-- .entry-header -->
+
+
 	<?php
 	    if (has_post_thumbnail()) {
 	        echo '<div class="single-post-thumbnail clear">';
@@ -14,14 +24,7 @@
 	    }
 	?>
 
-	<header class="entry-header">
-<!-- 	<h1>content-recipe.php</h1> -->
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 
-		<div class="entry-meta">
-			<?php josh_cooks_posted_on(); ?>
-		</div><!-- .entry-meta -->
-	</header><!-- .entry-header -->
 
 	<div class="entry-content">
 

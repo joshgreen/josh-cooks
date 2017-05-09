@@ -10,13 +10,15 @@
   font-family: 'Oxygen', 'Open Sans', sans-serif
   font-weight: 400
   letter-spacing: 0.1rem
-.site-header #compact
+  height: 80px
+.compact .site-header
   +box-shadow(0 1px 4px rgba(0, 0, 0, .2))
   display: block
   position: fixed
   z-index: 9999!important
   top: 0
   left: 0
+  height: 50px
 
 
 .site-header:after
@@ -24,13 +26,12 @@
   clear: both
   display: block
 
-nav
+.site-navigation nav
   float: right
 
 nav .menu
   margin: 0
   padding: 0
-
 
 nav>ul
   float: left
@@ -46,10 +47,16 @@ nav .dropdown
 
 nav li a
   float: left
-  padding: 35px
-
+  padding: 28px 35px
+  +link-colors(white, white, white, white, white)
+  &:focus
+    outline: none
+  &:active
+    border-bottom: none
+    +text-shadow(white 0 0 5px)
 .compact nav li a
-  padding: 23px
+  padding: 13px
+  overflow: hidden
 
 nav li a:hover
   background: darken($header, 10%)
@@ -103,16 +110,24 @@ nav li li a:hover
   margin-right: 30px
   display: none
 #menu-icon span
-  border: 2px solid $link
+  border: 2px solid white
   width: 30px
   margin-bottom: 5px
   display: block
   -webkit-transition: all .2s
   transition: all .1s
+
+.current-menu-item
+  a
+    background: darken($header, 3%)
+
+
+
+
 @media only screen and (max-width:  1170px)
 
   nav >ul>li >a
-    padding: 35px 15px
+    padding: 28px 15px
 
 @media only screen and (min-width:  960px)
 
@@ -133,14 +148,12 @@ nav li li a:hover
     top: 45px
     cursor: pointer
   .compact #menu-icon
-    top: 37px
+    top: 27px
   #menu-icon.active .first
-    transform: rotate(45deg)
-    -webkit-transform: rotate(45deg)
+    +transform(rotate(45deg))
     margin-top: 10px
   #menu-icon.active .second
-    transform: rotate(135deg)
-    -webkit-transform: rotate(135deg)
+    +transform(rotate(135deg))
     position: relative
     top: -9px
 
@@ -153,6 +166,7 @@ nav li li a:hover
   nav
     padding: 10px
     float: left
+    background: $header
   nav ul
     float: none
   nav li
@@ -168,7 +182,7 @@ nav li li a:hover
     border: none
     padding: 0
   .site-header nav a
-    color: $link
+    color: white
     padding: 8px
   .site-header nav a:hover
     background: #fff
