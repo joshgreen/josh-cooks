@@ -42,7 +42,10 @@ if ( post_password_required() ) {
 			<?php
 				wp_list_comments( array(
 					'style'      => 'ul',
-					'short_ping' => true,
+    				'short_ping' => false,
+                    'format'     => 'html5',
+                    'avatar_size' => 256,
+                    'callback' => 'format_comment'
 				) );
 			?>
 		</ol><!-- .comment-list -->

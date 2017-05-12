@@ -1,1 +1,66 @@
-.comments-area
+ol.comment-list, ul.children
+  list-style: none
+
+ol.comment-list
+  margin: 0
+  padding: 0
+
+.avatar
+  max-width: 256px
+  height: auto
+
+.comment-metadata, .reply
+  font-family: 'Oxygen', 'Open Sans', sans-serif
+  font-size: 0.9em
+
+.reply
+  margin-bottom: 1rem
+
+
+.comment-metadata
+  padding: 0 0 0.4rem 0
+
+.comment p:last-of-type
+  margin-bottom: 4px
+
+li.comment
+  padding: 0 0 1rem 0
+
+// Comment form
+.comment-form
+  font-family: 'Oxygen', 'Open Sans', sans-serif
+  font-size: 1em
+  margin-bottom: 3rem
+  .logged-in-as
+    font-size: 0.9em
+  textarea
+    width: 100%
+    max-width: 650px
+    border: 1px solid $lightgrey
+    font-size: 0.7em
+    padding: 0.4rem 0.8rem
+    &:focus
+      outline: none
+  p
+    font-size: 1em
+    margin: 0 0 0.8rem 0
+
+
+
+.comment-form-author, .comment-form-author, .comment-form-email, .comment-form-url, .comment-notes, .comment-form-comment
+  label
+    font-size: 0.9em
+    padding: 0
+    margin: 0
+    width: 70px
+    display: inline-block
+  input
+    font-size: 0.9em
+
+.comment-form-comment label
+  display: block
+  margin: 0 0 0.4rem 0
+
+
+p.comment-notes
+  font-size: 0.9em

@@ -68,16 +68,17 @@ thead th
 
 // Buttons
 a.button-primary, input[type="reset"], input[type="submit"]
-  font-family: 'Lato', sans-serif
-  background: $link
+  font-family: 'Oxygen', 'Open Sans', sans-serif
+  background: $header
   +link-colors(white,white,white,white,white)
   text-transform: uppercase
   border: none
   padding: 0.6rem 1.5rem
   line-height: 1.5
   font-size: 0.7rem
+  font-weight: 400
   &:hover, &:active
-    background: $link-active
+    background: darken($header, 10%)
   &:focus, &:active
     text-shadow: none
     border: none

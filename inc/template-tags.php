@@ -19,8 +19,10 @@ function the_posts_navigation() {
 		return;
 	}
 	?>
+	<section class="bottom-pagination">
 	<nav class="navigation posts-navigation" role="navigation">
 		<h2 class="screen-reader-text"><?php _e( 'Posts navigation', 'josh-cooks' ); ?></h2>
+		<h4>Navigation</h4>
 		<div class="nav-links">
 
 			<?php if ( get_next_posts_link() ) : ?>
@@ -33,6 +35,7 @@ function the_posts_navigation() {
 
 		</div><!-- .nav-links -->
 	</nav><!-- .navigation -->
+	</section>
 	<?php
 }
 endif;
@@ -54,6 +57,7 @@ function the_post_navigation() {
 	?>
 	<nav class="navigation post-navigation" role="navigation">
 		<h2 class="screen-reader-text"><?php _e( 'Post navigation', 'josh-cooks' ); ?></h2>
+		<h4>Navigation</h4>
 		<div class="nav-links">
 			<?php
 				previous_post_link( '<div class="nav-previous">%link</div>', '%title' );
